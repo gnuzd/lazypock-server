@@ -1,0 +1,3 @@
+-- System schema migrations live here (applied in filename order).
+-- Planned system tables: _collections, _fields, _settings.
+-- Intentionally empty until the schema engine is designed.

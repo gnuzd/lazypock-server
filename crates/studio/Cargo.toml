@@ -1,0 +1,13 @@
+[package]
+name = "lazypock-studio"
+description = "Server-rendered admin UI under /_/"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+lazypock-core = { workspace = true }
+lazypock-db = { workspace = true }

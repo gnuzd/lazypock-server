@@ -1,0 +1,13 @@
+[package]
+name = "lazypock-api"
+description = "REST API under /api/"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+lazypock-core = { workspace = true }
+lazypock-db = { workspace = true }

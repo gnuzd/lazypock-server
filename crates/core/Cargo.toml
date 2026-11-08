@@ -1,0 +1,11 @@
+[package]
+name = "lazypock-core"
+description = "Configuration, errors, ids and telemetry shared by all crates"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]

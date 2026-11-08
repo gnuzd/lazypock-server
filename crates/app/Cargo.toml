@@ -1,0 +1,18 @@
+[package]
+name = "lazypock-app"
+description = "The lazypock binary and CLI"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+lazypock-core = { workspace = true }
+lazypock-api = { workspace = true }
+lazypock-studio = { workspace = true }
+
+[[bin]]
+name = "lazypock"
+path = "src/main.rs"

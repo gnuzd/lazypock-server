@@ -1,0 +1,12 @@
+[package]
+name = "lazypock-sql"
+description = "Filter language: lexer, parser, AST, column whitelist and SQL generation"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+lazypock-core = { workspace = true }

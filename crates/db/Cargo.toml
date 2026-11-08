@@ -1,0 +1,13 @@
+[package]
+name = "lazypock-db"
+description = "Connection pool, migrations, records CRUD and request context"
+version.workspace = true
+edition.workspace = true
+publish = false
+
+[lints]
+workspace = true
+
+[dependencies]
+lazypock-core = { workspace = true }
+lazypock-schema = { workspace = true }

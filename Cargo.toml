@@ -1,0 +1,56 @@
+[workspace]
+resolver = "2"
+members = [
+  "crates/core",
+  "crates/sql",
+  "crates/schema",
+  "crates/db",
+  "crates/api",
+  "crates/studio",
+  "crates/app",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+
+[workspace.lints.rust]
+unsafe_code = "forbid"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+
+# Internal crates (dependencies flow one way: core <- sql <- schema <- db <- api, studio <- app)
+[workspace.dependencies]
+lazypock-core = { path = "crates/core" }
+lazypock-sql = { path = "crates/sql" }
+lazypock-schema = { path = "crates/schema" }
+lazypock-db = { path = "crates/db" }
+lazypock-api = { path = "crates/api" }
+lazypock-studio = { path = "crates/studio" }
+
+# External crates. Declared here so versions live in one place; a crate opts in with
+# `name = { workspace = true }` when it starts using one. Versions were checked to resolve
+# together; sea-query is pinned to 0.32 (1.x needs a newer Rust than 1.85).
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "net", "signal", "time"] }
+axum = "0.8"
+tower-http = { version = "0.6", features = ["timeout", "limit", "trace"] }
+tokio-postgres = "0.7"
+deadpool-postgres = "0.14"
+rustls = "0.23"
+sea-query = { version = "0.32", default-features = false, features = ["backend-postgres"] }
+askama = "0.14"
+rust-embed = "8"
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tracing = "0.1"
+tracing-subscriber = "0.3"
+thiserror = "2"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+strip = true
+# panic = "abort"  # smaller binary, but no unwinding; decide after measuring
